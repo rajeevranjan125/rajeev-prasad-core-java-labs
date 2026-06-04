@@ -4,18 +4,25 @@ public class SumOfCubesOfDigit {
 
     public int sumOfCubesOfDigit(int n) {
 
-        //write your code
         int sum = 0;
+        boolean negative = false;
 
-        while (n > 1) {
+        //handling edge case
+        if (n < 0) {
+            n = -n;
+            negative = true;
+        }
+
+        while (n != 0) {
 
             int rem = n % 10;
-            int cubeOfDigit = rem * rem * rem;
-            sum += cubeOfDigit;
+            sum += rem * rem * rem;
             n = n / 10;
         }
 
-        sum += n;
+        if (negative) {
+            return -sum;
+        }
 
         return sum;
     }
@@ -24,8 +31,12 @@ public class SumOfCubesOfDigit {
 
         SumOfCubesOfDigit num = new SumOfCubesOfDigit();
 
-        int sumOfCubeOfDigit = num.sumOfCubesOfDigit(222);
+        int sumOfCubeOfDigit1 = num.sumOfCubesOfDigit(0);
+        int sumOfCubeOfDigit2 = num.sumOfCubesOfDigit(226);
+        int sumOfCubeOfDigit3 = num.sumOfCubesOfDigit(-226);
 
-        System.out.println(sumOfCubeOfDigit);
+        System.out.println(sumOfCubeOfDigit1);
+        System.out.println(sumOfCubeOfDigit2);
+        System.out.println(sumOfCubeOfDigit3);
     }
 }
