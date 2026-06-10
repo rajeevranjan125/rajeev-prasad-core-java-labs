@@ -375,3 +375,23 @@ db.restaurant.find(
     grades:1
   }
 )
+
+// Q23. Find restaurant_id, name, and grades where the 2nd element of the grades array has:
+
+// Grade "A"
+// Score 9
+// Date 2014-08-11T00:00:00Z
+
+db.restaurant.find(
+  {
+    "grades.1.grade":"A",
+    "grades.1.score":9,
+    "grades.1.date": ISODate("2014-08-11T00:00:00Z")
+  },
+  {
+    _id:0,
+    restaurant_id:1,
+    name:1,
+    grades:1
+  }
+)
