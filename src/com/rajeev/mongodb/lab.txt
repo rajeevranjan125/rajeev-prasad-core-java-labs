@@ -215,3 +215,21 @@ db.restaurant.find(
     cuisine:1
   }
 )
+
+db.restaurant.find(
+  {
+    $and:[
+      {borough:{$ne:"Staten Island"}},
+      {borough:{$ne:"Queens"}},
+      {borough:{$ne:"Bronx"}},
+      {borough:{$ne:"Brooklyn"}}
+    ]
+  },
+  {
+    _id:0,
+    restaurant_id:1,
+    name:1,
+    borough:1,
+    cuisine:1
+  }
+)
