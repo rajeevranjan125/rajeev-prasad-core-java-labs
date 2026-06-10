@@ -265,3 +265,18 @@ db.restaurant.find(
     cuisine:1
   }
 )
+
+// Q16. Same fields for restaurants whose name contains 'Reg' anywhere.
+
+db.restaurant.find(
+  {
+    name:{$regex:"Reg"}
+  },
+  {
+    _id:0,
+    name:1,
+    restaurant_id:1,
+    borough:1,
+    cuisine:1
+  }
+)
