@@ -152,3 +152,17 @@ db.restaurant.find(
     grades:1
   }
 )
+
+
+// Q12. Same as Q11, but without using the $and operator.
+
+db.restaurant.find(
+  {
+    $and: [
+    {cuisine:{$ne:"American"}},
+    {"grades.score":{$gt:70}},
+    {"address.coord.1":{$lt:-65.754168}}
+  ]
+  }
+)
+
