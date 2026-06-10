@@ -215,6 +215,7 @@ db.restaurant.find(
     cuisine:1
   }
 )
+// Q19. Display the same fields for restaurants not in those four boroughs.
 
 db.restaurant.find(
   {
@@ -224,6 +225,22 @@ db.restaurant.find(
       {borough:{$ne:"Bronx"}},
       {borough:{$ne:"Brooklyn"}}
     ]
+  },
+  {
+    _id:0,
+    restaurant_id:1,
+    name:1,
+    borough:1,
+    cuisine:1
+  }
+)
+
+// Q14. Find restaurant_id, name, borough, and cuisine for restaurants whose name starts with 'Wil'.
+
+
+db.restaurant.find(
+  {
+    name:{$regex:"^Will"}
   },
   {
     _id:0,
