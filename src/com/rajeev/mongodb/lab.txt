@@ -1,0 +1,125 @@
+db.restaurant.insertOne(
+  {
+  "address": {
+    "building": "1007",
+    "coord": [ -73.856077, 40.848447 ],
+    "street": "Morris Park Ave",
+    "zipcode": "10462"
+  },
+  "borough": "Bronx",
+  "cuisine": "Bakery",
+  "grades": [
+    { "date": { "$date": 1393804800000 }, "grade": "A", "score": 2 },
+    { "date": { "$date": 1378857600000 }, "grade": "A", "score": 6 },
+    { "date": { "$date": 1358985600000 }, "grade": "A", "score": 10 },
+    { "date": { "$date": 1322006400000 }, "grade": "A", "score": 9 },
+    { "date": { "$date": 1299715200000 }, "grade": "B", "score": 14 }
+  ],
+  "name": "Morris Park Bake Shop",
+  "restaurant_id": "30075445"
+}
+)
+
+// Q1. Display all documents in the restaurants collection.
+
+db.restaurant.find();
+
+// Q2. Display only restaurant_id, name, borough, and cuisine for all restaurants.
+
+
+db.restaurant.find(
+  {},
+  {
+    restaurant_id:1,
+    name:1,
+    borough:1,
+    cuisine:1
+  }
+)
+
+// Q3. Same as above, but exclude _id from the results.
+
+db.restaurant.find(
+  {},
+  {
+    _id:0,
+    restaurant_id:1,
+    borough:1,
+    cuisine:1,
+    name:1,
+  }
+)
+
+// Q4. Display restaurant_id, name, borough, and zipcode — again without _id.
+
+db.restaurant.find(
+  {},
+  {
+    name:1,
+    borough:1,
+    cuisine:1,
+    restaurant_id:1,
+    "address.zipcode":1,
+    _id:0
+  }
+)
+
+// Q5. Find all restaurants located in the Bronx.
+
+db.restaurant.find(
+ {
+   borough: "Bronx"
+ }
+)
+
+// Q6. Show only the first 5 restaurants in the Bronx.
+
+db.restaurant.find(
+  {
+    borough:"Bronx"
+  }
+).limit(5);
+
+// Q7. Skip the first 5 Bronx restaurants and show the next 5.
+
+db.restaurant.find(
+  {
+    borough:"borough"
+  }
+).skip(5).limit(5);
+
+// Q10. Find restaurants with a latitude value less than -95.754168.
+
+db.restaurant.find(
+  {
+    "address.coord.1":{$lt: -95.754168}
+  }
+)
+
+// Q8. Find restaurants that achieved atleast score greater than 90.
+//first approach with atleast
+db.restaurant.find(
+  {
+    "grades.score":{$gt:90}
+  }
+)
+//second approach with all
+db.restaurant.find(
+  {
+    "grades":{
+      $not:{
+        $elemMatch:{
+          score:{$lte:90}
+        }
+      }
+    }
+  }
+)
+
+// Q9. Find restaurants with a score between 80 and 100 (exclusive).
+
+db.restaurant.find(
+  {
+    "grades.score": {$gt:80, $lt:100}
+  }
+)
