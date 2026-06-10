@@ -250,3 +250,18 @@ db.restaurant.find(
     cuisine:1
   }
 )
+
+// Q15. Same fields for restaurants whose name ends with 'ces'.
+
+db.restaurant.find(
+  {
+    name:{$regex:"Will$"}
+  },
+  {
+    _id:0,
+    name:1,
+    restaurant_id:1,
+    borough:1,
+    cuisine:1
+  }
+)
