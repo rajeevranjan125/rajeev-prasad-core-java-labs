@@ -177,3 +177,26 @@ db.restaurant.find(
     ]
   }
 )
+
+
+// Q18. Display restaurant_id, name, borough, and cuisine for restaurants in Staten Island, Queens, Bronx, or Brooklyn.
+
+
+db.restaurant.find(
+
+  {
+    $or:[
+    {borough:"Staten Island"},
+    {borough:"Queens"},
+    {borough:"Bronx"},
+    {borough:"Brooklyn"}
+  ]
+  },
+  {
+    _id:0,
+    restaurant_id:1,
+    name:1,
+    borough:1,
+    cuisine:1
+  }
+)
