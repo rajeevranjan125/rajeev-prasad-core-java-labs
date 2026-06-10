@@ -412,3 +412,16 @@ d.restaurant.find(
     borough:1
   }
 )
+
+
+// Q25. List all restaurants sorted by name ascending.
+
+db.restaurant.find().sort({name:1});
+
+// Q26. List all restaurants sorted by name descending.
+
+db.restaurant.find().sort({name:-1});
+
+// Q27. Sort by cuisine ascending, and within the same cuisine sort by borough descending.
+
+db.restaurant.find().sort({cuisine:1,borough:-1})
