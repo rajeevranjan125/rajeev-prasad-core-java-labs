@@ -280,3 +280,18 @@ db.restaurant.find(
     cuisine:1
   }
 )
+
+// Q31. Find name, borough, longitude, latitude, and cuisine for restaurants with 'mon' anywhere in the name.
+
+db.restaurant.find(
+  {
+    name:{$regex:"mon",$options:"i"}
+  },
+  {
+    _id:0,
+    name:1,
+    restaurant_id:1,
+    borough:1,
+    cuisine:1
+  }
+)
