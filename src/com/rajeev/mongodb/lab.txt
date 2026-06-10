@@ -325,4 +325,8 @@ db.restaurant.find(
     {borough:{$ne:"Brooklyn"}}
   ]
   }
-)
+).sort(
+   {
+     cuisine:-1
+   }
+ )
