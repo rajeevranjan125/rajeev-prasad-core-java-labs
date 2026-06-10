@@ -123,3 +123,18 @@ db.restaurant.find(
     "grades.score": {$gt:80, $lt:100}
   }
 )
+
+// Q20. Find restaurant_id, name, borough, and cuisine for restaurants with a score not more than 10.
+
+db.restaurant.find(
+  {
+    "grades.score":{$lte:10}
+  },
+  {
+    restaurant_id:1,
+    name:1,
+    borough:1,
+    cuisine:1,
+    _id:0
+  }
+)
