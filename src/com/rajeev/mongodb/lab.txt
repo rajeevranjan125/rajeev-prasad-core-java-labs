@@ -166,3 +166,14 @@ db.restaurant.find(
   }
 )
 
+// Q17. Find restaurants in the Bronx that serve either American or Chinese cuisine.
+
+db.restaurant.find(
+  {
+    borough:"Bronx",
+    $or:[
+      {cuisine:"American"},
+      {cuisine:"Chinese"}
+    ]
+  }
+)
