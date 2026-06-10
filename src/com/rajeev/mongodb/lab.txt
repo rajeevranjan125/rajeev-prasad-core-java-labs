@@ -138,3 +138,17 @@ db.restaurant.find(
     _id:0
   }
 )
+
+// Q30. Find restaurant_id, name, and grades for restaurants where the score is divisible by 7 (remainder = 0).
+
+
+db.restaurant.find(
+  {
+    "grades.score":{$mod:[7,0]}
+  },
+  {
+    restaurant_id:1,
+    name:1,
+    grades:1
+  }
+)
