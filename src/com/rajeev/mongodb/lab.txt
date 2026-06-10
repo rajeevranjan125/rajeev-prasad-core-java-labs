@@ -310,3 +310,19 @@ db.restaurant.find(
     cuisine:1
   }
 )
+
+// Q13. Find restaurants that:
+
+// Do not serve American cuisine
+// Have a grade of 'A'
+// Are not in Brooklyn
+
+db.restaurant.find(
+  {
+    $and:[
+    {cuisine:{$ne:"American"}},
+    {"grades.grade":"A"},
+    {borough:{$ne:"Brooklyn"}}
+  ]
+  }
+)
