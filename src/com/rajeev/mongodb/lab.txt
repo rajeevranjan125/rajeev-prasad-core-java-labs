@@ -295,3 +295,18 @@ db.restaurant.find(
     cuisine:1
   }
 )
+
+// Q32. Same fields for restaurants whose name begins with 'Mad'.
+
+db.restaurant.find(
+  {
+    name:{$regex:"^Mad", $options:"i"}
+  },
+  {
+    _id:0,
+    name:1,
+    restaurant_id:1,
+    borough:1,
+    cuisine:1
+  }
+)
